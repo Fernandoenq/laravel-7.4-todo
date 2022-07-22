@@ -17,8 +17,10 @@ class TodoController extends Controller
         $user = auth()->user();
 
         $todos = Todo::where('user_id', $user->id)->get();
+        $ativos = Todo::where('user_id', $user->id)->where('is_complete', '=', 1)->get();
 
-        return view('dashboard', compact('user', 'todos'));
+
+        return view('dashboard', compact('user', 'todos', 'ativos'));
     }
 
     /**
@@ -83,6 +85,7 @@ class TodoController extends Controller
     public function destroy(Todo $todo)
     {
         try {
+             $user = auth()->user();
             // Verificar se TODO é do usuário
             if ($todo->user_id !== $user->id) {
                 return response('', 403);
