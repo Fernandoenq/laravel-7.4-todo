@@ -56,7 +56,11 @@ class TodoController extends Controller
         
         $todo = Todo::where('id', '=', $id)->first();
         //return $todo;
-        return view('edit', compact('todo'));
+        $user = auth()->user();
+        if($todo->user_id == $user->id){
+            return view('edit', compact('todo'));
+        }
+        return response('', 404);
     }
 
     public function storeedit($tod,  Request $request)

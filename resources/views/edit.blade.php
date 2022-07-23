@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '| Dashboard')
+@section('title', '| Editar Tarefa')
 
 @section('content')
     <a href="{{ route('logout') }}" class="position-absolute top-0 end-0 link-secondary p-3">
