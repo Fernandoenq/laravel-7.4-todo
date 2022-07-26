@@ -51,7 +51,7 @@ class TodoController extends Controller
         return redirect('/dashboard')->with('success', 'TODO criado com sucesso');
     }
 
-    public function edit($id,)
+    public function edit($id)
     {
         
         $todo = Todo::where('id', '=', $id)->first();
